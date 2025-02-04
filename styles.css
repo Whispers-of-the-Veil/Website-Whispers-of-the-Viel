@@ -1,3 +1,37 @@
+@font-face {
+    font-family: 'DRKrapkaSquare'; 
+    src: url('./Assets/Fonts/DRKrapkaSquare-ExtraBold.otf') format('opentype');
+}
+
+/* Change the styling for windows bellow 1250 pixels */
+@media (max-width: 1250px) {
+    .Header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Internal ul {
+        flex-direction: column;
+    }
+
+    .Internal ul li {
+        width: 100%;
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    .Internal ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .Internal ul li a:hover {
+        padding: 5px 100px;
+    }
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -12,17 +46,18 @@ footer {
     bottom: 0;
 }
 
-.Contributors ul {
-    list-style-type: none;
-    padding: 100;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-.Contributors ul a {
-    padding: 10px 50px;
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
+/* Stylizes the main content of the website */
 .Content {
     margin: auto;
     width: 75%;
@@ -75,6 +110,15 @@ footer {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
+/* Sylizes elements so they grow when hovered over */
+.HoverGrow {
+    transition: transform 0.3s ease;
+}
+.HoverGrow:hover {
+    transform: scale(1.1);
+}
+
+
 /* Stylizes the images in the gallary into a grid */
 .ImageGrid {
     display: grid;
@@ -83,7 +127,8 @@ footer {
 }
 .Image {
     overflow: hidden;
-    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
 }
 .Image img {
     width: 100%;
@@ -134,8 +179,65 @@ footer {
     position: relative;
     z-index: 2;
     transition: background-color 0.3s;
+    min-width: 150px; /* Set a minimum width for buttons */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .Internal ul li a:hover {
     background-color: grey;
     color: white;
+}
+
+/* Full-screen image styling */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+/* Show the lightbox when it's targeted */
+.lightbox:target {
+    display: flex;
+}
+
+/* Styles the background for a profile */
+.Profile {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.ProfileCard {
+    flex-basis: 20%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+.ProfileCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Stylize any text with this class with the DRKropkaSquare font */
+.StyleText {
+    font-family: 'DRKrapkaSquare';
 }
